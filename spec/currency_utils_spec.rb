@@ -1,5 +1,4 @@
-require 'rspec'
-require 'currency_utils'
+require 'spec_helper'
 
 describe CurrencyUtils do
   it 'converts a USD formatted string into an integer' do

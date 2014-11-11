@@ -1,5 +1,4 @@
-require 'rspec'
-require 'item'
+require 'spec_helper'
 
 describe Item do
   let(:item) { Item.new('soup', '$4.25') }
