@@ -3,41 +3,42 @@
 Dir[File.dirname(__dir__) + "/lib/*.rb"].each { |file| require file }
 require 'optparse'
 
-class CLI
-  
-  def initialize(file_reader = FileReader, order = Order)
-    @options = {}
-    parse_options
-    
-    @reader = file_reader.new(options[:file])
-    @order = order.new(reader.target_price, Items.new(reader.items))
-    output_combinations
-  end
-
-  private
-  attr_reader :reader, :order, :options
-
-  def parse_options
-    OptionParser.new do |opts|
-      opts.on("-f", "--file FILE", "Mandatory data file") do |file| 
-        options[:file] = file 
-      end
-    end.parse!
-    raise OptionParser::MissingArgument, 'Specify a file with -f FILE' if options[:file].nil?
-  end
-
-  def output_combinations
-    combinations = order.find_combinations
-    puts no_combinations_message if combinations.empty?
-    order.find_combinations.each do |items|
-      puts items.to_output
-      puts "=" * 20
+module XKCDKnapsack
+  class CLI
+    def initialize(file_reader = XKCDKnapsack::FileReader, order = XKCDKnapsack::Order)
+      @options = {}
+      parse_options
+      
+      @reader = file_reader.new(options[:file])
+      @order = order.new(reader.target_price, XKCDKnapsack::Items.new(reader.items))
+      output_combinations
     end
-  end
 
-  def no_combinations_message
-    "No combination of menu items is equal in cost to the target price."
+    private
+    attr_reader :reader, :order, :options
+
+    def parse_options
+      OptionParser.new do |opts|
+        opts.on("-f", "--file FILE", "Mandatory data file") do |file| 
+          options[:file] = file 
+        end
+      end.parse!
+      raise OptionParser::MissingArgument, 'Specify a file with -f FILE' if options[:file].nil?
+    end
+
+    def output_combinations
+      combinations = order.find_combinations
+      puts no_combinations_message if combinations.empty?
+      order.find_combinations.each do |items|
+        puts items.to_output
+        puts "=" * 20
+      end
+    end
+
+    def no_combinations_message
+      "No combination of menu items is equal in cost to the target price."
+    end
   end
 end
 
-CLI.new
+XKCDKnapsack::CLI.new

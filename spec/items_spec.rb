@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-describe Items do
+describe XKCDKnapsack::Items do
   before do
-    @soup = Item.new('soup', '$4.25')
-    @bread = Item.new('bread', '$1.15')
-    @soda = Item.new('soda', '$2.50')
+    @soup = XKCDKnapsack::Item.new('soup', '$4.25')
+    @bread = XKCDKnapsack::Item.new('bread', '$1.15')
+    @soda = XKCDKnapsack::Item.new('soda', '$2.50')
   end
-  let(:menu) { Items.new([@soup, @soup, @soup, @bread, @soda, @soda]) }
+  let(:menu) { XKCDKnapsack::Items.new([@soup, @soup, @soup, @bread, @soda, @soda]) }
 
   it 'calculates the sum' do
     expect(menu.sum).to eq 1890

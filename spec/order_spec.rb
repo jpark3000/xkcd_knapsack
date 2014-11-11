@@ -1,14 +1,14 @@
 require 'spec_helper'
 
-describe Order do
+describe XKCDKnapsack::Order do
   before do
-    @reader = FileReader.new(File.join(File.dirname(__dir__), 'menu.txt'))
+    @reader = XKCDKnapsack::FileReader.new(File.join(File.dirname(__dir__), 'menu.txt'))
   end
 
-  let(:order) { Order.new(@reader.target_price, Items.new(@reader.items)) }
+  let(:order) { XKCDKnapsack::Order.new(@reader.target_price, XKCDKnapsack::Items.new(@reader.items)) }
   
   it 'returns an array of Items objects' do
-    expect(order.find_combinations.map(&:class)).to eq Array.new(2, Items)
+    expect(order.find_combinations.map(&:class)).to eq Array.new(2, XKCDKnapsack::Items)
   end
 
   it 'returns the correct combination of items and prices' do
