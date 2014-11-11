@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe XKCDKnapsack::FileReader do
-  let(:reader) { XKCDKnapsack::FileReader.new(File.join(File.dirname(__dir__), 'menu.txt')) }
+  let(:reader) { XKCDKnapsack::FileReader.new(File.expand_path('./', 'menu.txt')) }
 
   it 'returns the target price' do
     expect(reader.target_price).to eq 1505

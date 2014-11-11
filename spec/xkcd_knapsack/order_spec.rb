@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe XKCDKnapsack::Order do
   before do
-    @reader = XKCDKnapsack::FileReader.new(File.join(File.dirname(__dir__), 'menu.txt'))
+    @reader = XKCDKnapsack::FileReader.new(File.expand_path('./', 'menu.txt'))
   end
 
   let(:order) { XKCDKnapsack::Order.new(@reader.target_price, XKCDKnapsack::Items.new(@reader.items)) }
