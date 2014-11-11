@@ -1,0 +1,5 @@
+require 'xkcd_knapsack/currency_utils'
+require 'xkcd_knapsack/file_reader'
+require 'xkcd_knapsack/item'
+require 'xkcd_knapsack/items'
+require 'xkcd_knapsack/order'
