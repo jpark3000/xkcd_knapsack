@@ -1,0 +1,37 @@
+#!/usr/bin/env ruby
+
+Dir[File.dirname(__dir__) + "/lib/*.rb"].each { |file| require file }
+require 'optparse'
+
+class CLI
+  
+  def initialize(file_reader = FileReader, order = Order)
+    @options = {}
+    parse_options
+    
+    @reader = file_reader.new(options[:file])
+    @order = order.new(reader.target_price, Items.new(reader.items))
+    generate_combinations
+  end
+
+  private
+  attr_reader :reader, :order, :options
+
+  def parse_options
+    OptionParser.new do |opts|
+      opts.on("-f", "--file FILE", "Mandatory data file") do |file| 
+        options[:file] = file 
+      end
+    end.parse!
+    raise OptionParser::MissingArgument, 'Specify a file with -f FILE' if options[:file].nil?
+  end
+
+  def generate_combinations
+    order.find_combinations.each do |items|
+      puts items.to_output
+      puts "=" * 20
+    end
+  end
+end
+
+CLI.new
