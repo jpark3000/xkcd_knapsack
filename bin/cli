@@ -11,7 +11,7 @@ class CLI
     
     @reader = file_reader.new(options[:file])
     @order = order.new(reader.target_price, Items.new(reader.items))
-    generate_combinations
+    output_combinations
   end
 
   private
@@ -26,11 +26,17 @@ class CLI
     raise OptionParser::MissingArgument, 'Specify a file with -f FILE' if options[:file].nil?
   end
 
-  def generate_combinations
+  def output_combinations
+    combinations = order.find_combinations
+    puts no_combinations_message if combinations.empty?
     order.find_combinations.each do |items|
       puts items.to_output
       puts "=" * 20
     end
+  end
+
+  def no_combinations_message
+    "No combination of menu items is equal in cost to the target price."
   end
 end
 
