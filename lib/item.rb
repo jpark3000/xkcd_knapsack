@@ -8,6 +8,6 @@ class Item
   end
 
   def to_output
-    "#{name} #{integer_to_currency(price)}"
+    "#{integer_to_currency(price)} #{name}"
   end
 end

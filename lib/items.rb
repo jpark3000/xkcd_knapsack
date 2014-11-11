@@ -19,7 +19,7 @@ class Items
 
   def to_output
     items_count.map do |k, v|
-      "#{v} #{k.to_output}"
+      "#{k.to_output} x#{v}"
     end
   end
 

@@ -17,6 +17,6 @@ describe Items do
   end
 
   it 'formats the correct string for output' do
-    expect(menu.to_output).to eq ['3 soup $4.25', '1 bread $1.15', '2 soda $2.50']
+    expect(menu.to_output).to eq ['$4.25 soup x3', '$1.15 bread x1', '$2.50 soda x2']
   end
 end
