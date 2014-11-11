@@ -6,7 +6,7 @@ describe XKCDKnapsack::Order do
   end
 
   let(:order) { XKCDKnapsack::Order.new(@reader.target_price, XKCDKnapsack::Items.new(@reader.items)) }
-  
+
   it 'returns an array of Items objects' do
     expect(order.find_combinations.map(&:class)).to eq Array.new(2, XKCDKnapsack::Items)
   end

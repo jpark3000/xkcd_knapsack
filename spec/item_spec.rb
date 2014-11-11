@@ -7,4 +7,3 @@ describe XKCDKnapsack::Item do
     expect(item.to_output).to eq '$4.25 soup'
   end
 end
-

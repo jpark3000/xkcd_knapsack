@@ -1,7 +1,7 @@
 module XKCDKnapsack
   class Order
     attr_reader :target_price, :menu
-    
+
     def initialize(target_price, menu)
       @target_price = target_price
       @menu = menu

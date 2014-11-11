@@ -17,7 +17,7 @@ module XKCDKnapsack
     end
 
     private
-    
+
     def file
       @file
     end

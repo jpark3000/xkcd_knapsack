@@ -8,7 +8,7 @@ module XKCDKnapsack
     def initialize(file_reader = XKCDKnapsack::FileReader, order = XKCDKnapsack::Order)
       @options = {}
       parse_options
-      
+
       @reader = file_reader.new(options[:file])
       @order = order.new(reader.target_price, XKCDKnapsack::Items.new(reader.items))
       output_combinations
@@ -19,8 +19,8 @@ module XKCDKnapsack
 
     def parse_options
       OptionParser.new do |opts|
-        opts.on("-f", "--file FILE", "Mandatory data file") do |file| 
-          options[:file] = file 
+        opts.on("-f", "--file FILE", "Mandatory data file") do |file|
+          options[:file] = file
         end
       end.parse!
       raise OptionParser::MissingArgument, 'Specify a file with -f FILE' if options[:file].nil?

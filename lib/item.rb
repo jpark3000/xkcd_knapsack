@@ -2,7 +2,7 @@ module XKCDKnapsack
   class Item
     include CurrencyUtils
     attr_reader :name, :price
-    
+
     def initialize(name, price)
       @name = name
       @price = currency_to_i(price)

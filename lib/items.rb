@@ -1,7 +1,7 @@
 module XKCDKnapsack
   class Items
     attr_reader :items
-    
+
     def initialize(items)
       @items = items
     end
@@ -25,7 +25,7 @@ module XKCDKnapsack
     end
 
     private
-    
+
     def items_count
       items_count = Hash.new(0)
       items.each do |item|
