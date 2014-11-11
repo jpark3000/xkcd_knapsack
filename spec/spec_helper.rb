@@ -1,7 +1,2 @@
 require 'rspec'
-
-require 'currency_utils'
-require 'file_reader'
-require 'item'
-require 'items'
-require 'order'
+require File.expand_path('./xkcd_knapsack','lib')
