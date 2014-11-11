@@ -1,0 +1,22 @@
+require 'csv'
+class FileReader
+  include CurrencyUtils
+
+  def initialize(file)
+    @file = file
+  end
+
+  def target_price
+    currency_to_i(CSV.read(file).first.first)
+  end
+
+  def items
+    CSV.read(file)[1..-1].map { |a| Item.new(*a) }
+  end
+
+  private
+  
+  def file
+    @file
+  end
+end
